@@ -10,3 +10,18 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+import logging
+import os
+
+# Get the directory where the script is located
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Configure logging
+log_file_path = os.path.join(script_dir, "loopificator_log.txt")
+logging.basicConfig(
+    filename=log_file_path,
+    filemode="w",
+    level=logging.INFO,
+    format="%(asctime)s - %(message)s"
+)
