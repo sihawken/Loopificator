@@ -52,3 +52,19 @@ def process_gcode(input_file):
     for x in range(loops):
         looped_lines.append(f"; LOOP {x+1} OF {loops}")
         looped_lines.append(lines)
+    
+    # Overwrite the input file with the modified G-code
+    with open(input_file, 'w') as outfile:
+        outfile.writelines(modified_lines)
+
+    logging.info("G-code processing completed")
+    logging.info(f"Log file saved at {log_file_path}")
+
+# Main execution
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Process G-code file to loop print a specified amount of times')
+    parser.add_argument('input_file', help='Input G-code file')
+    
+    args = parser.parse_args()
+    
+    process_gcode(input_file=args.input_file)
