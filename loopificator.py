@@ -40,8 +40,15 @@ def process_gcode(input_file):
     ROOT = tk.Tk()
 
     ROOT.withdraw()
-    # the input dialog
+    
     loops = int(simpledialog.askstring(title="How many loops?",
                                   prompt="How many times do you want to loop this print?:"))
     
     logging.info(f"Looping file {loops} times")
+
+    # Process the G-code
+    looped_lines = []
+
+    for x in range(loops):
+        looped_lines.append(f"; LOOP {x+1} OF {loops}")
+        looped_lines.append(lines)
