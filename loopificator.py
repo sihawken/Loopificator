@@ -51,8 +51,8 @@ def process_gcode(input_file):
     looped_lines = []
 
     for x in range(loops):
-        looped_lines.append(f"; LOOP {x+1} OF {loops}")
-        looped_lines.append(lines)
+        looped_lines.append(f"; LOOP {x+1} OF {loops} \n")
+        looped_lines += lines
     
     # Overwrite the input file with the modified G-code
     with open(input_file, 'w') as outfile:
