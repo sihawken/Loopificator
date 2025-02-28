@@ -13,6 +13,8 @@
 
 import logging
 import os
+import tkinter as tk
+from tkinter import simpledialog
 
 # Get the directory where the script is located
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -25,3 +27,21 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(message)s"
 )
+
+def process_gcode(input_file):
+    
+    logging.info("Starting G-code processing")
+    logging.info(f"Input file: {input_file}")
+
+    # Read the input G-code
+    with open(input_file, 'r') as infile:
+        lines = infile.readlines()
+
+    ROOT = tk.Tk()
+
+    ROOT.withdraw()
+    # the input dialog
+    loops = int(simpledialog.askstring(title="How many loops?",
+                                  prompt="How many times do you want to loop this print?:"))
+    
+    logging.info(f"Looping file {loops} times")
