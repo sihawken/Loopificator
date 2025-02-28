@@ -56,7 +56,7 @@ def process_gcode(input_file):
     
     # Overwrite the input file with the modified G-code
     with open(input_file, 'w') as outfile:
-        outfile.writelines(modified_lines)
+        outfile.writelines(looped_lines)
 
     logging.info("G-code processing completed")
     logging.info(f"Log file saved at {log_file_path}")
